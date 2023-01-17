@@ -1,5 +1,5 @@
-import Building from "./building";
-import Ticket from "./ticket";
+import Building from "./building.js";
+import Ticket from "./ticket.js";
 
 export default class TicketOffice extends Building {
     constructor(name, area, maxNrPeople) {
@@ -9,27 +9,40 @@ export default class TicketOffice extends Building {
     }
 
     produceFullTickets(max) {
-        if(this.fullTickets.length != max/2) {
-            for(let i = 0; i < max/2; i++) {
-                let full = new Ticket(50, "full");
-                this.fullTickets.push(full);
-            }
-        } else {
-            console.log("Cannot produce more tickets.");
+        for(let i = 0; i < max; i++) {
+            let full = new Ticket(50, "full");
+            this.fullTickets.push(full);
         }
     }
     produceBirdTickets(max) {
-        if(this.birdTickets.length != max/2) {
-            for(let i = 0; i < max/2; i++) {
-                let bird = new Ticket(50, "bird-house");
-                this.birdTickets.push(bird);
-            }
-        } else {
-            console.log("Cannot produce more tickets.");
+        for(let i = 0; i < max; i++) {
+            let bird = new Ticket(50, "bird-house");
+            this.birdTickets.push(bird);
         }
     }
     produceTickets(max) {
-        this.produceFullTickets(max);
-        this.produceBirdTickets(max);
+        let volume = max/2;
+        if (!Number.isInteger(volume)) {
+            volume = Math.floor(volume);
+            this.produceFullTickets(volume+1);
+        } else {
+            this.produceFullTickets(volume);
+        }
+        this.produceBirdTickets(volume);
+    }
+    sellFullPriceTicket() {
+        if(this.fullTickets.length > 0) {
+            return this.fullTickets.pop();
+        }
+        return null;
+    }
+    sellBirdHouseTicket() {
+        if(this.birdTickets.length > 0) {
+            return this.birdTickets.pop();
+        }
+        return null;    }
+    displayAvailableNumberOfTickets() {
+        console.log("Remaning full price tickets: " + this.fullTickets.length);
+        console.log("Remaning bird house tickets: " + this.birdTickets.length);
     }
 }
