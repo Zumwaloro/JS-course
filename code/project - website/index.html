@@ -1,0 +1,57 @@
+<head>
+    <link rel="stylesheet" href="index.css">
+    <script type="text/javascript" src="./index.js"></script>
+</head>
+
+<body> 
+
+    <h1 class="header">
+        This is my fancy header
+    </h1>
+
+    <!-- submit button example-->
+    <div class="form-container">
+        <form>
+            <label for="fname">First name:</label><br>
+            <input type="text" id="fname" name="fname"><br>
+            <label for="lname">Last name:</label><br>
+            <input type="text" id="lname" name="lname">
+        </form>
+        <button class="submit" id="submit" onclick="myFunction()">
+            Submit
+        </button>
+    </div>
+    <div class="placeholder" id="placeholder">
+        I am totally empty.
+    </div>
+
+    <!-- a simple calculator-->
+
+    <div class="form-container">
+        <form>
+            <label for="fnumb">First number:</label><br>
+            <input type="text" id="finput" name="fnumb"><br>
+            <label for="snumb">Second number:</label><br>
+            <input type="text" id="sinput" name="snumb">
+        </form>
+    </div>
+    <div class="calc-buttons">
+        <button class="submit" id="addition" onclick="addition()">
+            +
+        </button>
+        <button class="submit" id="subtraction" onclick="subtraction()">
+            -
+        </button>
+        <button class="submit" id="multiplication" onclick="multiplication()">
+            x
+        </button>
+        <button class="submit" id="division" onclick="division()">
+            /
+        </button>
+    </div>
+    <form class="form-container">
+        <label for="snumb">Result:</label><br>
+        <input type="text" id="result" name="result">
+    </form>
+
+</body>
